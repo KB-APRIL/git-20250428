@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>이유진 소개</title>
+    <style>
+        body {
+            background: linear-gradient(#dbe4ee, #f0f4f8);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        .ipod {
+            width: 250px;
+            height: 400px;
+            background: white;
+            border: 10px solid #ccc;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen {
+            flex: 5;
+            background: #e0f7fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .screen h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .screen p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .wheel {
+            flex: 5;
+            background: #f5f5f5;
+            border-top: 2px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            font-size: 16px;
+            background: #ccc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            user-select: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .button:hover {
+            background: #bbb;
+        }
+
+        .wheel::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 5px solid #ccc;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ipod">
+        <div class="screen" id="screen">
+            <h1>이유진</h1>
+            <p>🎂 2001.11.26</p>
+            <p>🎧 음악 감상</p>
+        </div>
+        <div class="wheel">
+            <div class="button" onclick="changeInfo()">NEXT</div>
+        </div>
+    </div>
+
+    <script>
+        const infos = [
+            {
+                title: "이유진",
+                birth: "🎂 2001.11.26",
+                hobby: "🎧 음악 감상"
+            },
+            {
+                title: "감사합니다!",
+                birth: "",
+                hobby: "🎶 즐거운 하루 보내세요"
+            }
+        ];
+
+        let current = 0;
+
+        function changeInfo() {
+            current = (current + 1) % infos.length;
+            const screen = document.getElementById('screen');
+            screen.innerHTML = `
+        <h1>${infos[current].title}</h1>
+        <p>${infos[current].birth}</p>
+        <p>${infos[current].hobby}</p>
+      `;
+        }
+    </script>
+</body>
+
+</html>
